@@ -40,8 +40,12 @@
     </table>`
 
         const copyBtn = document.getElementById("copyBtn");
-        const spreadSheetRow = new Blob([tableData], {type: 'text/html'});
-        navigator.clipboard?.write([new ClipboardItem({'text/html': spreadSheetRow})]);
+        copyBtn.addEventListener("click", function(){
+            console.log('Copy to clipboard', tableData);
+            const spreadSheetRow = new Blob([tableData], {type: 'text/html'});
+            console.log('ClipboardItem', new ClipboardItem({'text/html': spreadSheetRow}));
+            navigator.clipboard?.write([new ClipboardItem({'text/html': spreadSheetRow})]);
+        });
     </script>
 </body>
 </html>
