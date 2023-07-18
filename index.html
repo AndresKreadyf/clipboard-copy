@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipboard HTML table copy</title>
+</head>
+<body>
+    <button id="copyBtn">Copy table</button>
+    <script>
+
+        const tableData = `<table>
+        <thead>
+            <tr>
+                <th>ISIN</th>
+                <th>Fund share class</th>
+                <th>Document-Type</th>
+                <th>Date</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>LU0143551892</td>
+                <td>T. Rowe Price Funds SICAV - Global Focused Growth Equity F. (A)</td>
+                <td>Monthly Report</td>
+                <td>01/31/2022</td>
+                <td><a href="https://api.fundinfo.com/document/d235c3f56ad24e1bfbe1d3b62b189b8a_152960/MR_AT_de_LU0143551892_YES_2022-01-31.pdf?apiKey=6f095620-762d-4722-bed0-ff1397aa6cdd">Link
+                        to document</a></td>
+            </tr>
+            <tr>
+                <td>LU0143551892</td>
+                <td>T. Rowe Price Funds SICAV - Global Focused Growth Equity F. (A)</td>
+                <td>KIID</td>
+                <td>02/14/2022</td>
+                <td><a href="https://api.fundinfo.com/document/7c81e18a5cf23c1ee1674abab789a8a2_145704/KID_AT_de_LU0143551892_YES_2022-02-14.pdf?apiKey=6f095620-762d-4722-bed0-ff1397aa6cdd">Link
+                        to document</a></td>
+            </tr>
+        </tbody>
+    </table>`
+
+        const copyBtn = document.getElementById("copyBtn");
+        const spreadSheetRow = new Blob([tableData], {type: 'text/html'});
+        navigator.clipboard?.write([new ClipboardItem({'text/html': spreadSheetRow})]);
+    </script>
+</body>
+</html>
